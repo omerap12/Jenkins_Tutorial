@@ -14,7 +14,8 @@ pipeline{
             }
             stage("Test"){
                 steps{
-                    sh "./a.out ${params.Input}"
+                    dev=sh "./a.out ${params.Input}"
+                    echo "dev is ${dev}"
                     echo "Test complete"
                 }
             }
