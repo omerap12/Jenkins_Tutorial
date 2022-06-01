@@ -7,7 +7,7 @@ pipeline{
         stages{
             stage("build"){
                 steps{
-                    echo "Building app"
+                    echo "In build"
                 }
             }
             stage ("test"){
@@ -17,12 +17,12 @@ pipeline{
                     }
                 }
                 steps{
-                    echo "testing app"
+                    echo "In test"
                 }
             }
             stage ("deploy"){
                 steps{
-                    echo "deoploying app"
+                    echo "In deploy ${params.Version}"
             }
         }
     }
