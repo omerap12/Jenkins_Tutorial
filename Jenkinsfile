@@ -1,29 +1,23 @@
 pipeline{
     agent any
         parameters {
-            choice(name: "Version",description:"Which version to check",choices:["1.0","1.1","1.2"])   
-            booleanParam(name: "Use_SSL",description:"Use SSL",defaultValue:false)
+            string (name: "Input", defaultValue: "MrJenkins",description:"Input one word")
+            booleanParam(name:"Print", description:"Print the input", defaultValue:true)
         }
+
         stages{
-            stage("build"){
+            stage("Build"){
                 steps{
-                    echo "In build"
+                    sh "gcc main.c"
+                    echo "Build complete"
                 }
             }
-            stage ("test"){
-                when {
-                    expression{
-                        params.Use_SSL == true
-                    }
-                }
+            stage("Test"){
                 steps{
-                    echo "In test"
+                    sh "./a.out ${params.Input}"
+                    echo "Test complete"
                 }
             }
-            stage ("deploy"){
-                steps{
-                    echo "In deploy ${params.Version}"
+                }
             }
-        }
-    }
-}
+        
