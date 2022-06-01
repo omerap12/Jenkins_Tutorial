@@ -1,5 +1,3 @@
-def gv
-
 pipeline{
     agent any
         parameters {
@@ -9,9 +7,7 @@ pipeline{
         stages{
             stage("build"){
                 steps{
-                    script{
-                        gv.buildApp()
-                    }
+                    echo "Building app"
                 }
             }
             stage ("test"){
@@ -21,16 +17,12 @@ pipeline{
                     }
                 }
                 steps{
-                    script{
-                        gv.buildApp()
-                    }
+                    echo "testing app"
                 }
             }
             stage ("deploy"){
                 steps{
-                    script{
-                        gv.deployApp()
-                    }
+                    echo "deoploying app"
             }
         }
     }
